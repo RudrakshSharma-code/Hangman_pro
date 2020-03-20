@@ -24,3 +24,13 @@ let wordBank =[
     //     definition: ""
     // }
 ]
+//invoke function
+getQuest();
+
+// get random word from wordBank
+
+function getQuest(){
+    let ranNum = Math.floor(Math.random() * wordBank.length);
+    document.getElementById("question").innerHTML = wordBank[ranNum].definition;
+}
+
