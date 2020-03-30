@@ -58,7 +58,7 @@ function getQuest(){
 //create buttons
 function Button(letter){
     this.btn = document.createElement("button");
-    this.btn.style.width = 
+    this.btn.style.width = 2 + "%";
     this.btn.value = letter;
     this.btn.innerHTML = letter;
     this.btn.onclick = this.disableButton;
@@ -66,9 +66,9 @@ function Button(letter){
 
     //disable button after click (need to fix this)
     this.disableButton = function(){
-        this.btn.style.visibility = "none";
-    };
-    
+        console.log(this.btn.value);
+        this.btn.style.visibility = "hidden";
+    }
 }
 
 //generate creating buttons
@@ -81,11 +81,11 @@ function generateButtons(){
 
 //create underscore
 function createUnderscore(){
-    let underscore = "";
+    let underscore = [];
     for (let i = 0; i < answer.length; i++){
-        underscore += "_ " ;
+        underscore.push("_");
     }
-    document.getElementById("answer").innerHTML = underscore;
+    document.getElementById("answer").innerHTML = underscore.join(" ");
 }
 
 // restart the game
