@@ -3,7 +3,10 @@ window.onload = function scripts() {
 const MAX = 26;
 const NUM = 65;
 let answer;
+let score = 0;
 let arrayButtons = [];
+let hiddenWord = [];
+let underscore = [];
 let wordBank =[
     {
         word: "ENTITY",
@@ -61,8 +64,10 @@ function Button(letter){
     this.btn.style.width = 2 + "%";
     this.btn.value = letter;
     this.btn.innerHTML = letter;
-    this.btn.onclick = this.disableButton;
+    this.btn.setAttribute = ("id","" + letter);
+    // this.btn.onclick = this.disableButton;
     document.body.appendChild(this.btn);
+    this.btn.onclick = checkLetter(letter);
 
     //disable button after click (need to fix this)
     this.disableButton = function(){
@@ -81,13 +86,36 @@ function generateButtons(){
 
 //create underscore
 function createUnderscore(){
-    let underscore = [];
+    // let underscore = [];
     for (let i = 0; i < answer.length; i++){
         underscore.push("_");
     }
     document.getElementById("answer").innerHTML = underscore.join(" ");
 }
 
+//split the word
+function takeLetter(){
+    for(let i = 0; i < answer.length; i++){
+    hiddenWord.push(answer.charAt(i));
+    }
+}
+
+//check correct
+function checkLetter(letter){
+    for (let i = 0; i < hiddenWord.length; i++){
+        if (hiddenWord[i] == letter){
+            remainingLetter--;
+        score++;
+        underScore[i] = hiddenWord[i];
+        document.getElementByID("" + letter).style.visibility = "hidden";
+    } else {
+            if (score > 0){
+                score--;
+        }
+        document.getElementByID("" + letter).style.visibility = "hidden";
+    }
+}
+}
 // restart the game
 function restart(){
     window.location.reload();
