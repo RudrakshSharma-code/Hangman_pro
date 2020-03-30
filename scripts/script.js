@@ -1,3 +1,5 @@
+window.onload = function scripts() {
+
 const MAX = 26;
 const NUM = 65;
 let answer;
@@ -64,7 +66,7 @@ function Button(letter){
 
     //disable button after click (need to fix this)
     this.disableButton = function(){
-        this.btn.style.visibility = "hidden";
+        this.btn.style.visibility = "none";
     };
     
 }
@@ -89,4 +91,6 @@ function createUnderscore(){
 // restart the game
 function restart(){
     window.location.reload();
+}
+
 }
