@@ -56,26 +56,29 @@ function getQuest(){
 }
 
 //create buttons
-function Button(letter){
+//create buttons
+function Button(letter, font){
     this.btn = document.createElement("button");
-    this.btn.style.width = 2 + "%";
+    this.btn.style.fontSize = font;
     this.btn.value = letter;
     this.btn.innerHTML = letter;
-    this.btn.onclick = this.disableButton;
-    document.body.appendChild(this.btn);
 
     //disable button after click (need to fix this)
     this.disableButton = function(){
-        console.log(this.btn.value);
-        this.btn.style.visibility = "hidden";
+        //console.log(this.value);
+        this.style.visibility = "hidden";
     }
+    this.btn.onclick = this.disableButton;
+    document.body.appendChild(this.btn);
+
 }
 
 //generate creating buttons
 function generateButtons(){
     for(let i=0; i < MAX; i++ ){
         let ch = String.fromCharCode(NUM + i);
-        arrayButtons.push(new Button(ch));
+        let fs = 24 + "px"; //font size
+        arrayButtons.push(new Button(ch, fs));
     }
 }
 
