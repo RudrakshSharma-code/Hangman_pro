@@ -2,9 +2,11 @@ window.onload = function scripts() {
 
     const MAX = 26;
     const NUM = 65;
+    let user;
     let answer;
     let remainingLetter;
     let score = 0;
+    let count = 7;
     let arrayButtons = [];
     let hiddenWord = [];
     let underscore = [];
@@ -63,7 +65,6 @@ window.onload = function scripts() {
     getQuest();
     generateButtons();
     createUnderscore();
-    wins();
     document.getElementById("rs").onclick = restart;
 
     // get random word from wordBank
@@ -88,6 +89,7 @@ window.onload = function scripts() {
             for (let i = 0; i <= answer.length; i++) {
                 if (this.value == answer.charAt(i)) {
                     remainingLetter--;
+                    console.log(remainingLetter);
                     scoreUp();
                     underscore[i] = this.value;
                     document.getElementById("answer").innerHTML = underscore.join(" ");
@@ -101,6 +103,7 @@ window.onload = function scripts() {
                 } 
             }
             if(wrong == true){
+                count--;
                 scoreDown();
                 wrongGuess();
             }
@@ -152,12 +155,15 @@ window.onload = function scripts() {
     // }
 
     //win game
-    function wins() {
-        let user = prompt("Please enter your name.");
+    let interval = this.setInterval(function() {
+        
         if (remainingLetter == 0) {
+            user = prompt("Please enter your name.");
             alert(user+", your score is " + score);
+            clearInterval(interval);
         }
-    }
+    }, 100);
+    
 
     //score up
     function scoreUp() {
@@ -177,7 +183,21 @@ window.onload = function scripts() {
 
     //When user guesses a wrong letter
     function wrongGuess() {
-
+        if (count == 6){
+            document.getElementById("hangman").src = "images/hang2.png";
+        } else if (count == 5){
+            document.getElementById("hangman").src = "images/hang3.png";
+        } else if (count == 4){
+            document.getElementById("hangman").src = "images/hang4.png";
+        } else if (count == 3){
+            document.getElementById("hangman").src = "images/hang5.png";
+        } else if (count == 2){
+            document.getElementById("hangman").src = "images/hang6.png";
+        } else if (count == 1){
+            document.getElementById("hangman").src = "images/hang7.png";
+        } else if (count == 0){
+            alert("Help!!!!!!!!!!!!!!!!!!!!!!!!");
+        }
     }
 
     // restart the game
