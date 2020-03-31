@@ -91,10 +91,20 @@ window.onload = function scripts() {
                     scoreUp();
                     underscore[i] = this.value;
                     document.getElementById("answer").innerHTML = underscore.join(" ");
-                } else {
-                    wrongGuess();
-                }
+                } 
             }
+            let wrong = true;
+            for (let i = 0; i <= answer.length; i++){
+                if (this.value == answer.charAt(i)) {
+                    wrong = false;
+                    break;
+                } 
+            }
+            if(wrong == true){
+                scoreDown();
+                wrongGuess();
+            }
+            
         }
         this.btn.onclick = this.disableButton;
         document.body.appendChild(this.btn);
