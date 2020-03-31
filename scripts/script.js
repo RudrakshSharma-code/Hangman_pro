@@ -167,9 +167,10 @@ window.onload = function scripts() {
             document.getElementById("hangman").src = "images/hang7.png";
         } else if (count == 0){
             document.getElementById("hangman").src = "images/hang8.png";
-            user = prompt("Please enter your name.");
-            alert(user+", your score is " + score);
-            
+            setTimeout(function(){
+                user = prompt("Please enter your name.");
+                alert(user+", your score is " + score);
+            }, 1000);
         }
     }
 /*------------------------------------Wins The Game-------------------------------------------------*/
