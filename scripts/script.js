@@ -3,6 +3,7 @@ window.onload = function scripts() {
     const MAX = 26;
     const NUM = 65;
     let answer;
+    let remainingLetter;
     let score = 0;
     let arrayButtons = [];
     let hiddenWord = [];
@@ -46,6 +47,7 @@ window.onload = function scripts() {
     getQuest();
     generateButtons();
     createUnderscore();
+    wins();
     document.getElementById("rs").onclick = restart;
 
     // get random word from wordBank
@@ -53,6 +55,8 @@ window.onload = function scripts() {
         let ranNum = Math.floor(Math.random() * wordBank.length);
         document.getElementById("question").innerHTML = wordBank[ranNum].definition;
         answer = wordBank[ranNum].word;
+        remainingLetter = answer.length;
+        console.log(remainingLetter);
     }
 
     //create buttons
@@ -67,6 +71,8 @@ window.onload = function scripts() {
             this.style.visibility = "hidden";
             for (let i = 0; i <= answer.length; i++) {
                 if (this.value == answer.charAt(i)) {
+                    remainingLetter--;
+                    scoreUp();
                     underscore[i] = this.value;
                     document.getElementById("answer").innerHTML = underscore.join(" ");
                 } else {
@@ -96,28 +102,50 @@ window.onload = function scripts() {
         document.getElementById("answer").innerHTML = underscore.join(" ");
     }
 
-    //split the word
-    function takeLetter() {
-        for (let i = 0; i < answer.length; i++) {
-            hiddenWord.push(answer.charAt(i));
+    // //split the word
+    // function takeLetter() {
+    //     for (let i = 0; i < answer.length; i++) {
+    //         hiddenWord.push(answer.charAt(i));
+    //     }
+    // }
+
+    //check correct
+    // function checkLetter(letter) {
+    //     for (let i = 0; i < hiddenWord.length; i++) {
+    //         if (hiddenWord[i] == letter) {
+    //             remainingLetter--;
+    //             score++;
+    //             underScore[i] = hiddenWord[i];
+    //             document.getElementById("answer").innerHTML = underscore.join(" ");
+    //         } else {
+    //             if (score > 0) {
+    //                 score--;
+    //             }
+    //         }
+    //     }
+    // }
+    
+    //win game
+    function wins(){
+        if (remainingLetter == 0){
+            alert("You wins!");
         }
     }
 
-    //check correct
-    function checkLetter(letter) {
-        for (let i = 0; i < hiddenWord.length; i++) {
-            if (hiddenWord[i] == letter) {
-                remainingLetter--;
-                score++;
-                underScore[i] = hiddenWord[i];
-                document.getElementByID("" + letter).style.visibility = "hidden";
-            } else {
-                if (score > 0) {
-                    score--;
-                }
-                document.getElementByID("" + letter).style.visibility = "hidden";
-            }
+    //score up
+    function scoreUp(){
+        score += 1;
+        document.getElementById("score").innerHTML= "Score: " + score; 
+    }
+
+    //score down
+    function scoreDown(){
+        if (score > 0) {
+            score = score - 1;        
+        } else {
+            score = 0;
         }
+        document.getElementById("score").innerHTML= "Score: " + score;
     }
 
     //When user guesses a wrong letter
