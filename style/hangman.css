@@ -30,3 +30,8 @@
     width: 20vw;
     height: 35vh;
 }
+
+#buttons{
+    text-align: center;
+    font-size: 3vh;
+}
