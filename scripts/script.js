@@ -49,7 +49,7 @@ window.onload = function scripts() {
         },
         {
             word: "AMELIORATE",
-            definition: "to make better something that was bad or not good enough"
+            definition: "To make better something that was bad or not good enough"
         },
         {
             word: "IMMUNOCOMPROMISED",
@@ -125,16 +125,6 @@ window.onload = function scripts() {
         }
         document.getElementById("answer").innerHTML = underscore.join(" ");
     }
-
-    //win game
-    let interval = this.setInterval(function() {
-        
-        if (remainingLetter == 0) {
-            user = prompt("Please enter your name.");
-            alert(user+", your score is " + score);
-            clearInterval(interval);
-        }
-    }, 100);
     
 /*----------------------------------Decreases Score---------------------------------------------------*/
     function scoreUp() {
