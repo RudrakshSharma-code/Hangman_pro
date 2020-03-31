@@ -55,10 +55,6 @@ window.onload = function scripts() {
             word: "IMMUNOCOMPROMISED",
             definition: "Having an impaired immune system"
         }
-        // {
-        //     word: "" ,
-        //     definition: ""
-        // }
     ];
 
     //invoke function
@@ -76,7 +72,7 @@ window.onload = function scripts() {
         console.log(remainingLetter);
     }
 
-    //create buttons
+/*----------------------------------------------------Button Object Constructor------------------------------*/
     function Button(letter, font) {
         this.btn = document.createElement("button");
         this.btn.style.fontSize = font;
@@ -113,7 +109,7 @@ window.onload = function scripts() {
         document.getElementById("buttons").appendChild(this.btn);
     }
 
-    //generate creating buttons
+/*-------------------------------------------Generate Buttons---------------------------------------------*/
     function generateButtons() {
         for (let i = 0; i < MAX; i++) {
             let ch = String.fromCharCode(NUM + i);
@@ -122,9 +118,8 @@ window.onload = function scripts() {
         }
     }
 
-    //create underscore
-    function createUnderscore() {
-        // let underscore = [];
+/*--------------------------------------------Removes alphabets.-------------------------------------------*/
+    function createUnderscore() {;
         for (let i = 0; i < answer.length; i++) {
             underscore.push("_");
         }
@@ -141,14 +136,12 @@ window.onload = function scripts() {
         }
     }, 100);
     
-
-    //score up
+/*----------------------------------Decreases Score---------------------------------------------------*/
     function scoreUp() {
         score += 1;
         document.getElementById("score").innerHTML = "Score: " + score;
     }
-
-    //score down
+/*----------------------------------Increases Score---------------------------------------------------*/
     function scoreDown() {
         if (score > 0) {
             score = score - 1;
@@ -158,7 +151,7 @@ window.onload = function scripts() {
         document.getElementById("score").innerHTML = "Score: " + score;
     }
 
-    //When user guesses a wrong letter
+/*----------------------------------When user guesses wrong word-------------------------------------*/
     function wrongGuess() {
         if (count == 6){
             document.getElementById("hangman").src = "images/hang2.png";
@@ -173,13 +166,23 @@ window.onload = function scripts() {
         } else if (count == 1){
             document.getElementById("hangman").src = "images/hang7.png";
         } else if (count == 0){
-            alert("Help!!!!!!!!!!!!!!!!!!!!!!!!");
+            document.getElementById("hangman").src = "images/hang8.png";
+            user = prompt("Please enter your name.");
+            alert(user+", your score is " + score);
+            
         }
     }
-
-    // restart the game
+/*------------------------------------Wins The Game-------------------------------------------------*/
+    let interval = this.setInterval(function() {
+            
+        if (remainingLetter == 0) {
+            user = prompt("Please enter your name.");
+            alert(user+", your score is " + score);
+            clearInterval(interval);
+        }
+    }, 100);
+/*-------------------------------------Restarts the game---------------------------------------------*/
     function restart() {
         window.location.reload();
     }
-
 }
