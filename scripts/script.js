@@ -155,7 +155,7 @@ window.onload = function scripts() {
     //win game
     function wins() {
         if (remainingLetter == 0) {
-            alert("You wins!");
+            alert(user+", your score is " + score);
         }
     }
 
