@@ -171,5 +171,5 @@ window.onload = function scripts() {
 /*-------------------------------------Restarts the game---------------------------------------------*/
     function restart() {
         window.location.reload();
-
+    }
 }
