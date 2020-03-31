@@ -131,29 +131,6 @@ window.onload = function scripts() {
         document.getElementById("answer").innerHTML = underscore.join(" ");
     }
 
-    // //split the word
-    // function takeLetter() {
-    //     for (let i = 0; i < answer.length; i++) {
-    //         hiddenWord.push(answer.charAt(i));
-    //     }
-    // }
-
-    //check correct
-    // function checkLetter(letter) {
-    //     for (let i = 0; i < hiddenWord.length; i++) {
-    //         if (hiddenWord[i] == letter) {
-    //             remainingLetter--;
-    //             score++;
-    //             underScore[i] = hiddenWord[i];
-    //             document.getElementById("answer").innerHTML = underscore.join(" ");
-    //         } else {
-    //             if (score > 0) {
-    //                 score--;
-    //             }
-    //         }
-    //     }
-    // }
-
     //win game
     let interval = this.setInterval(function() {
         
