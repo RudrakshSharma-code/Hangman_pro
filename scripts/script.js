@@ -36,6 +36,22 @@ window.onload = function scripts() {
         {
             word: "COMMITTEE",
             definition: "A group of people appointed for a specific function, typically consisting of members of a larger group."
+        },
+        {
+            word: "TATTOO",
+            definition: "A form of body modification where a design is made by inserting ink"
+        },
+        {
+            word: "ELECTRICITY",
+            definition: "Is the set of physical phenomena associated with the presence and motion of electric charge"
+        },
+        {
+            word: "AMELIORATE",
+            definition: "to make better something that was bad or not good enough"
+        },
+        {
+            word: "IMMUNOCOMPROMISED",
+            definition: "Having an impaired immune system"
         }
         // {
         //     word: "" ,
@@ -76,7 +92,7 @@ window.onload = function scripts() {
                     underscore[i] = this.value;
                     document.getElementById("answer").innerHTML = underscore.join(" ");
                 } else {
-                    wrongGuess(); 
+                    wrongGuess();
                 }
             }
         }
@@ -124,35 +140,35 @@ window.onload = function scripts() {
     //         }
     //     }
     // }
-    
+
     //win game
-    function wins(){
-        if (remainingLetter == 0){
+    function wins() {
+        if (remainingLetter == 0) {
             alert("You wins!");
         }
     }
 
     //score up
-    function scoreUp(){
+    function scoreUp() {
         score += 1;
-        document.getElementById("score").innerHTML= "Score: " + score; 
+        document.getElementById("score").innerHTML = "Score: " + score;
     }
 
     //score down
-    function scoreDown(){
+    function scoreDown() {
         if (score > 0) {
-            score = score - 1;        
+            score = score - 1;
         } else {
             score = 0;
         }
-        document.getElementById("score").innerHTML= "Score: " + score;
+        document.getElementById("score").innerHTML = "Score: " + score;
     }
 
     //When user guesses a wrong letter
     function wrongGuess() {
-        
+
     }
-    
+
     // restart the game
     function restart() {
         window.location.reload();
