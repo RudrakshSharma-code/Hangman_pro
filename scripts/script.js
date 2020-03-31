@@ -156,7 +156,7 @@ window.onload = function scripts() {
         } else if (count == 1){
             document.getElementById("hangman").src = "images/hang7.png";
         } else if (count == 0){
-            alert("Help!!!!!!!!!!!!!!!!!!!!!!!!");
+            document.getElementById("hangman").src = "images/hang8.png";
         }
     }
 /*------------------------------------Wins The Game-------------------------------------------------*/
