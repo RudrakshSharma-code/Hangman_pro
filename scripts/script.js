@@ -2,7 +2,6 @@ window.onload = function scripts() {
 
     const MAX = 26;
     const NUM = 65;
-    let user = prompt("Please enter your name.");
     let answer;
     let remainingLetter;
     let score = 0;
@@ -154,6 +153,7 @@ window.onload = function scripts() {
 
     //win game
     function wins() {
+        let user = prompt("Please enter your name.");
         if (remainingLetter == 0) {
             alert(user+", your score is " + score);
         }
