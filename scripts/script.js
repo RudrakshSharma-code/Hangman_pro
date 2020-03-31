@@ -43,21 +43,18 @@ window.onload = function scripts() {
     ];
 
     //invoke function
-
     getQuest();
     generateButtons();
     createUnderscore();
     document.getElementById("rs").onclick = restart;
 
     // get random word from wordBank
-
     function getQuest() {
         let ranNum = Math.floor(Math.random() * wordBank.length);
         document.getElementById("question").innerHTML = wordBank[ranNum].definition;
         answer = wordBank[ranNum].word;
     }
 
-    //create buttons
     //create buttons
     function Button(letter, font) {
         this.btn = document.createElement("button");
@@ -72,6 +69,8 @@ window.onload = function scripts() {
                 if (this.value == answer.charAt(i)) {
                     underscore[i] = this.value;
                     document.getElementById("answer").innerHTML = underscore.join(" ");
+                } else {
+                    wrongGuess(); 
                 }
             }
         }
@@ -120,6 +119,12 @@ window.onload = function scripts() {
             }
         }
     }
+
+    //When user guesses a wrong letter
+    function wrongGuess() {
+        
+    }
+    
     // restart the game
     function restart() {
         window.location.reload();

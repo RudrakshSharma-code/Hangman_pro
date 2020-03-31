@@ -22,3 +22,11 @@
     text-align: center;
     font-size: 3vw;
 }
+
+#hangman {
+    position: absolute;
+    top: 45%;
+    left: 42%;
+    width: 20vw;
+    height: 35vh;
+}
