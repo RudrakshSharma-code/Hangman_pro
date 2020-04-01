@@ -17,7 +17,7 @@
     font-size: 3vw;
     font-family: fontS;
     position: absolute;
-    top: 40vh;
+    top: 35vh;
     left: 20vw;
     width: 60vw;
 }
@@ -29,19 +29,28 @@
     left: 30%;
     font-size: 3vh;
     width: 40vw;
-    height: 7vh;;
+    height: 7vh;
+    font-family: fontS;
 }
-
+#leaderboard{
+    height: 30vh;
+    width: 20vw;
+    position: absolute;
+    bottom: 20vh;
+    right: 2vh;
+}
 #banner{
-    position: absolute; 
-    bottom: 40%;
-    left: 80%;
+    font-family: fontS;
+    font-weight:lighter;
+    font-size: 3vh;
+    text-decoration: underline;
+    text-decoration-color: grey;
 }
 
 #scoreboard {
-    position: absolute;
-    bottom: 10%;
-    left: 85%;
+    font-family: fontS;
+    text-align: left;
+    font-weight: 300;
 }
 
 #score{
@@ -50,6 +59,7 @@
     left: 87vw;
     font-size: 3vw;
     font-family: fontS;
+    text-align: right;
 }
 #title{
     text-align: left;
@@ -71,8 +81,8 @@
     position: absolute;
 
 
-    top: 40vh;
+    top: 55vh;
     left: 25vw;
-    height: 50vh;
+    height: 30vh;
     width: 50vw;
 }

@@ -97,6 +97,7 @@ window.onload = function scripts() {
         this.btn.style.fontSize = font;
         this.btn.value = letter;
         this.btn.innerHTML = letter;
+        this.btn.style.fontFamily = "fontS";
 
         //Do not use this.btn in here, just use this. _____
         this.disableButton = function () {
@@ -132,7 +133,7 @@ window.onload = function scripts() {
     function generateButtons() {
         for (let i = 0; i < MAX; i++) {
             let ch = String.fromCharCode(NUM + i);
-            let fs = 24 + "px"; //font size
+            let fs = 4 + "vh"; //font size
             arrayButtons.push(new Button(ch, fs));
         }
     }
