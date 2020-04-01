@@ -168,10 +168,29 @@ window.onload = function scripts() {
             
         if (remainingLetter == 0) {
             user = prompt("Please enter your name.");
-            alert(user+", your score is " + score);
+            db.collection("scores").add({
+                name: user,
+                score: score
+            })
+            .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
+            console.log(user, score);
             clearInterval(interval);
         }
     }, 100);
+    
+/*------------------------------------Shows leader board and restarts game-------------------------------------------------*/
+db.collection("scores").get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+    });
+});
+    //scoresRef.orderBy("scores").orderBy("score", "desc")limit(10)
 /*-------------------------------------Restarts the game---------------------------------------------*/
     function restart() {
         window.location.reload();

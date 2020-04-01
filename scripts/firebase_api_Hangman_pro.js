@@ -12,28 +12,4 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  console.log(firebase);
   const db = firebase.firestore();
-
- /*-------------------------------------------Firebase functions---------------------------------------------*/
-//var ref = db.ref('scores');
-//var data = {
-  //name: "user",
-  //score: 4
-//}
-//ref.push(data);
-//console.log(data);
-
- //var htmlForPath = {};
- //var leaderboard = firebase.database().ref('score').limitToFirst(10);
-
-
-
-
-//function showName() {
-  //firebase.auth().onAuthStateChanged(function (user) {
-    //console.log(user);
-   //document.getElementById("name").innerHTML = user.displayName;
- // });
-//} 
-//showName();
