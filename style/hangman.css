@@ -1,11 +1,25 @@
+@font-face {
+    font-family: fontS;
+    src: url(Sketch\ College.ttf);
+}
 #question{
     text-align: center;
     font-size: 3vw;
+    font-family: fontS;
+    position: absolute;
+    top: 10vh;
+    left: 20vw;
+    width: 60vw;
 }
 
 #answer{
     text-align: center;
     font-size: 3vw;
+    font-family: fontS;
+    position: absolute;
+    top: 40vh;
+    left: 20vw;
+    width: 60vw;
 }
 
 #rs, #start{
@@ -31,8 +45,16 @@
 }
 
 #score{
-    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 87vw;
     font-size: 3vw;
+    font-family: fontS;
+}
+#title{
+    text-align: left;
+    font-size: 3vw;
+    font-family: fontS;
 }
 
 #hangman {
@@ -46,4 +68,11 @@
 #buttons{
     text-align: center;
     font-size: 3vh;
+    position: absolute;
+
+
+    top: 40vh;
+    left: 25vw;
+    height: 50vh;
+    width: 50vw;
 }
