@@ -2,6 +2,11 @@ window.onload = function scripts() {
 
     const MAX = 26;
     const NUM = 65;
+    let rs = document.getElementById("rs");
+    let start = document.getElementById("start");
+    let scoring = document.getElementById("score")
+    let hangman = document.getElementById("hangman")
+    let scoreboard = document.getElementById("scoreboard")
     let user;
     let answer;
     let remainingLetter;
@@ -57,11 +62,25 @@ window.onload = function scripts() {
         }
     ];
 
+    function atload() {
+        rs.style.display = "none";
+        scoreboard.style.display = "none";
+        document.getElementById("banner").style.display = "none";
+    }
+
+    //startsgame
+    function startgame() {
+        getQuest();
+        generateButtons();
+        createUnderscore();
+        rs.style.display = "block";
+        start.style.display = "none";
+    }
+
     //invoke function
-    getQuest();
-    generateButtons();
-    createUnderscore();
-    document.getElementById("rs").onclick = restart;
+    atload();
+    start.onclick = startgame;
+    rs.onclick = restart;
 
     // get random word from wordBank
     function getQuest() {
@@ -72,7 +91,7 @@ window.onload = function scripts() {
         console.log(remainingLetter);
     }
 
-/*----------------------------------------------------Button Object Constructor------------------------------*/
+    /*----------------------------------------------------Button Object Constructor------------------------------*/
     function Button(letter, font) {
         this.btn = document.createElement("button");
         this.btn.style.fontSize = font;
@@ -89,27 +108,27 @@ window.onload = function scripts() {
                     scoreUp();
                     underscore[i] = this.value;
                     document.getElementById("answer").innerHTML = underscore.join(" ");
-                } 
+                }
             }
             let wrong = true;
-            for (let i = 0; i <= answer.length; i++){
+            for (let i = 0; i <= answer.length; i++) {
                 if (this.value == answer.charAt(i)) {
                     wrong = false;
                     break;
-                } 
+                }
             }
-            if(wrong == true){
+            if (wrong == true) {
                 count--;
                 scoreDown();
                 wrongGuess();
             }
-            
+
         }
         this.btn.onclick = this.disableButton;
         document.getElementById("buttons").appendChild(this.btn);
     }
 
-/*-------------------------------------------Generate Buttons---------------------------------------------*/
+    /*-------------------------------------------Generate Buttons---------------------------------------------*/
     function generateButtons() {
         for (let i = 0; i < MAX; i++) {
             let ch = String.fromCharCode(NUM + i);
@@ -118,80 +137,92 @@ window.onload = function scripts() {
         }
     }
 
-/*--------------------------------------------Removes alphabets.-------------------------------------------*/
-    function createUnderscore() {;
+    /*--------------------------------------------Removes alphabets.-------------------------------------------*/
+    function createUnderscore() {
         for (let i = 0; i < answer.length; i++) {
             underscore.push("_");
         }
         document.getElementById("answer").innerHTML = underscore.join(" ");
     }
-    
-/*----------------------------------Decreases Score---------------------------------------------------*/
+
+    /*----------------------------------Decreases Score---------------------------------------------------*/
     function scoreUp() {
         score += 1;
-        document.getElementById("score").innerHTML = "Score: " + score;
+        scoring.innerHTML = "Score: " + score;
     }
-/*----------------------------------Increases Score---------------------------------------------------*/
+    /*----------------------------------Increases Score---------------------------------------------------*/
     function scoreDown() {
         if (score > 0) {
             score = score - 1;
         } else {
             score = 0;
         }
-        document.getElementById("score").innerHTML = "Score: " + score;
+        scoring.innerHTML = "Score: " + score;
     }
 
-/*----------------------------------When user guesses wrong word-------------------------------------*/
+    /*----------------------------------When user guesses wrong word-------------------------------------*/
     function wrongGuess() {
-        if (count == 6){
-            document.getElementById("hangman").src = "images/hang2.png";
-        } else if (count == 5){
-            document.getElementById("hangman").src = "images/hang3.png";
-        } else if (count == 4){
-            document.getElementById("hangman").src = "images/hang4.png";
-        } else if (count == 3){
-            document.getElementById("hangman").src = "images/hang5.png";
-        } else if (count == 2){
-            document.getElementById("hangman").src = "images/hang6.png";
-        } else if (count == 1){
-            document.getElementById("hangman").src = "images/hang7.png";
-        } else if (count == 0){
-            document.getElementById("hangman").src = "images/hang8.png";
-            setTimeout(function(){
+        if (count == 6) {
+            hangman.src = "images/hang2.png";
+        } else if (count == 5) {
+            hangman.src = "images/hang3.png";
+        } else if (count == 4) {
+            hangman.src = "images/hang4.png";
+        } else if (count == 3) {
+            hangman.src = "images/hang5.png";
+        } else if (count == 2) {
+            hangman.src = "images/hang6.png";
+        } else if (count == 1) {
+            hangman.src = "images/hang7.png";
+        } else if (count == 0) {
+            hangman.src = "images/hang8.png";
+            setTimeout(function () {
                 user = prompt("Please enter your name.");
-                alert(user+", your score is " + score);
+                alert(user + ", your score is " + score);
             }, 1000);
         }
     }
-/*------------------------------------Wins The Game-------------------------------------------------*/
-    let interval = this.setInterval(function() {
-            
+    /*------------------------------------Wins The Game-------------------------------------------------*/
+    let interval = this.setInterval(function () {
+
         if (remainingLetter == 0) {
             user = prompt("Please enter your name.");
-            db.collection("scores").add({
-                name: user,
-                score: score
-            })
-            .then(function(docRef) {
-                console.log("Document written with ID: ", docRef.id);
-            })
-            .catch(function(error) {
-                console.error("Error adding document: ", error);
-            });
+            if (user !== "") {
+                db.collection("scores").add({
+                        name: user,
+                        score: score
+                    })
+                    .then(function (docRef) {
+                        console.log("Document written with ID: ", docRef.id);
+                    })
+                    .catch(function (error) {
+                        console.error("Error adding document: ", error);
+                    });
+            } else {
+                alert('Please enter a name');
+                return;
+            }
             console.log(user, score);
+            scorelist();
             clearInterval(interval);
         }
     }, 100);
-    
-/*------------------------------------Shows leader board and restarts game-------------------------------------------------*/
-db.collection("scores").get().then(function(querySnapshot) {
-    querySnapshot.forEach(function(doc) {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-    });
-});
-    //scoresRef.orderBy("scores").orderBy("score", "desc")limit(10)
-/*-------------------------------------Restarts the game---------------------------------------------*/
+    /*------------------------------------Adds entry to leaderboard and displays-------------------------------------------------*/
+    function scorelist() {
+        scoreboard.style.display = "block";
+        document.getElementById("banner").style.display = "block";
+        db.collection("scores").orderBy("score", "desc").limit(10).get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                scoreboard.innerHTML += '<tr>' +
+                    '<td>' + doc.data().name + '</td>' +
+                    '<td>' + doc.data().score + '</td>' +
+                    '</tr>';;
+            });
+        });
+    }
+    /*-------------------------------------Generates a new word---------------------------------------------*/
+
+    /*-------------------------------------Restarts the game---------------------------------------------*/
     function restart() {
         window.location.reload();
     }

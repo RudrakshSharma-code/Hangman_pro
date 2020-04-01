@@ -8,7 +8,7 @@
     font-size: 3vw;
 }
 
-#rs{
+#rs, #start{
     position: absolute;
     text-align: center;
     bottom: 3%;
@@ -16,6 +16,18 @@
     font-size: 3vh;
     width: 40vw;
     height: 7vh;;
+}
+
+#banner{
+    position: absolute; 
+    bottom: 40%;
+    left: 80%;
+}
+
+#scoreboard {
+    position: absolute;
+    bottom: 10%;
+    left: 85%;
 }
 
 #score{

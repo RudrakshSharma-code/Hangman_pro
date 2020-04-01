@@ -7,17 +7,21 @@
     <link type="text/css" rel="stylesheet" href="style/hangman.css">
 </head>
 <body>
-<!--
-    <div>
-        <a href="login.html">Login</a> 
-    </div>
--->
     <p id="score">Score: 0</p>
     <img id="hangman" src="images/hang1.png">
     <p id ="question"></p>
     <p id ="answer"></p>
     <div id="buttons"></div>
-    <button id = "rs">Restart</button>
+    <button id="start">Start Game</button>
+    <button id="rs">Restart Game</button>
+        <h2 id="banner">Scoreboard</h2>
+    <!-- Display our Scoreboard here -->
+    <table id="scoreboard">
+        <tr>
+            <th>Name</th>
+            <th>Score</th>
+        </tr>
+    </table>
     <script src="scripts/script.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
