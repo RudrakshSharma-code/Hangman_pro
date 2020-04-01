@@ -2,6 +2,11 @@
     font-family: fontS;
     src: url(Sketch\ College.ttf);
 }
+/* -------------------Preventive Measure for Scrolling----------------------------------*/
+html, body {
+    margin: 0; height: 100%; 
+    overflow: hidden
+}
 #question{
     text-align: center;
     font-size: 3vw;
@@ -32,12 +37,13 @@
     height: 7vh;
     font-family: fontS;
 }
+/*--------------------------------Scoring System-----------------*/
 #leaderboard{
     height: 30vh;
-    width: 20vw;
+    width: 16vw;
     position: absolute;
-    bottom: 20vh;
-    right: 2vh;
+    bottom: 15vh;
+    right: 1vw;
 }
 #banner{
     font-family: fontS;
@@ -51,6 +57,7 @@
     font-family: fontS;
     text-align: left;
     font-weight: 300;
+    font-size: 2vh;
 }
 
 #score{
@@ -61,6 +68,7 @@
     font-family: fontS;
     text-align: right;
 }
+/*--------------------------Top---------------------------------*/
 #title{
     text-align: left;
     font-size: 3vw;
@@ -79,8 +87,6 @@
     text-align: center;
     font-size: 3vh;
     position: absolute;
-
-
     top: 55vh;
     left: 25vw;
     height: 30vh;
