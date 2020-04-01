@@ -176,16 +176,12 @@ window.onload = function scripts() {
             hangman.src = "images/hang7.png";
         } else if (count == 0) {
             hangman.src = "images/hang8.png";
-            setTimeout(function () {
-                user = prompt("Please enter your name.");
-                alert(user + ", your score is " + score);
-            }, 1000);
         }
     }
     /*------------------------------------Wins The Game-------------------------------------------------*/
     let interval = this.setInterval(function () {
 
-        if (remainingLetter == 0) {
+        if (remainingLetter == 0 || count == 0) {
             user = prompt("Please enter your name.");
             if (user !== "") {
                 db.collection("scores").add({
