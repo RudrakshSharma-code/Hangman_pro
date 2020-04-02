@@ -4,7 +4,8 @@
 }
 /* -------------------Preventive Measure for Scrolling----------------------------------*/
 html, body {
-    margin: 0; height: 100%; 
+    margin: 0; 
+    height: 100%; 
     overflow: hidden
 }
 #question{
@@ -12,7 +13,7 @@ html, body {
     font-size: 3vw;
     font-family: fontS;
     position: absolute;
-    top: 10vh;
+    top: 5vh;
     left: 20vw;
     width: 60vw;
 }
@@ -22,7 +23,7 @@ html, body {
     font-size: 3vw;
     font-family: fontS;
     position: absolute;
-    top: 35vh;
+    top: 25vh;
     left: 20vw;
     width: 60vw;
 }
@@ -42,13 +43,13 @@ html, body {
     height: 30vh;
     width: 16vw;
     position: absolute;
-    bottom: 15vh;
-    right: 1vw;
+    bottom: 50vh;
+    right: 2vw;
 }
 #banner{
     font-family: fontS;
     font-weight:lighter;
-    font-size: 3vh;
+    font-size: 2.5vw;
     text-decoration: underline;
     text-decoration-color: grey;
 }
@@ -57,7 +58,7 @@ html, body {
     font-family: fontS;
     text-align: left;
     font-weight: 300;
-    font-size: 2vh;
+    font-size: 1.5vw;
 }
 
 #score{
@@ -85,10 +86,16 @@ html, body {
 
 #buttons{
     text-align: center;
-    font-size: 3vh;
+    font-size: 3vw;
     position: absolute;
-    top: 55vh;
+    top: 45vh;
     left: 25vw;
     height: 30vh;
     width: 50vw;
+}
+
+@media only screen and (max-width: 750px) {
+    #hangman{
+        display: none;
+    }
 }
