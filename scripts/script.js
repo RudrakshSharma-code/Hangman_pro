@@ -41,8 +41,8 @@ window.onload = function scripts() {
         },
 
         {
-            word: "COMMITTEE",
-            definition: "A group of people appointed for a specific function, typically consisting of members of a larger group."
+            word: "VAR",
+            definition: "A disgusting variable in Javascript."
         },
         {
             word: "TATTOO",
@@ -59,6 +59,10 @@ window.onload = function scripts() {
         {
             word: "IMMUNOCOMPROMISED",
             definition: "Having an impaired immune system"
+        },
+        {
+            word: "JAVA",
+            definition: "A language better than Javascript."
         }
     ];
 
@@ -217,7 +221,6 @@ window.onload = function scripts() {
             });
         });
     }
-    /*-------------------------------------Generates a new word---------------------------------------------*/
 
     /*-------------------------------------Restarts the game-------------------------------------------------*/
     function restart() {

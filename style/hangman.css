@@ -1,8 +1,9 @@
+/* -------------------Importing Font----------------------------------*/
 @font-face {
     font-family: fontS;
     src: url(Sketch\ College.ttf);
 }
-/* -------------------Preventive Measure for Scrolling----------------------------------*/
+/* -------------------Preventive Measure for Scrolling-----------------*/
 html, body {
     margin: 0; 
     height: 100%; 
@@ -10,24 +11,24 @@ html, body {
 }
 #question{
     text-align: center;
-    font-size: 3vw;
+    font-size: 2.5vh;
     font-family: fontS;
     position: absolute;
-    top: 5vh;
+    top: 10vh;
     left: 20vw;
     width: 60vw;
 }
 
 #answer{
     text-align: center;
-    font-size: 3vw;
+    font-size: 3vh;
     font-family: fontS;
     position: absolute;
     top: 25vh;
     left: 20vw;
     width: 60vw;
 }
-
+/*----------------------------All Buttons-----------------------*/
 #rs, #start{
     position: absolute;
     text-align: center;
@@ -37,6 +38,15 @@ html, body {
     width: 40vw;
     height: 7vh;
     font-family: fontS;
+}
+#buttons{
+    text-align: center;
+    font-size: 3vw;
+    position: absolute;
+    top: 45vh;
+    left: 25vw;
+    height: 30vh;
+    width: 50vw;
 }
 /*--------------------------------Scoring System-----------------*/
 #leaderboard{
@@ -78,23 +88,14 @@ html, body {
 
 #hangman {
     position: absolute;
-    top: 65%;
-    left: 5%;
-    width: 15vw;
-    height: 30vh;
+    top: 50vh;
+    left: 1vw;
+    width: 21vw;
+    height: 35vh;
 }
 
-#buttons{
-    text-align: center;
-    font-size: 3vw;
-    position: absolute;
-    top: 45vh;
-    left: 25vw;
-    height: 30vh;
-    width: 50vw;
-}
-
-@media only screen and (max-width: 750px) {
+/*--------Removes image if aspect ratio is too small---------------*/
+@media only screen and (max-width: 600px) {
     #hangman{
         display: none;
     }
