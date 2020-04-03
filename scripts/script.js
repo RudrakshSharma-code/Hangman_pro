@@ -13,7 +13,6 @@ window.onload = function scripts() {
     let score = 0;
     let count = 7;
     let arrayButtons = [];
-    let hiddenWord = [];
     let underscore = [];
     let wordBank = [{
             word: "ENTITY",
@@ -186,8 +185,29 @@ window.onload = function scripts() {
     /*------------------------------------Wins The Game-------------------------------------------------*/
     let interval = this.setInterval(function () {
 
-        if (remainingLetter == 0 || count == 0) {
-            user = prompt("Please enter your name.");
+        if (remainingLetter == 0) {
+            user = prompt("You Win! Please enter your name.");
+            if (user !== "") {
+                db.collection("scores").add({
+                        name: user,
+                        score: score
+                    })
+                    .then(function (docRef) {
+                        console.log("Document written with ID: ", docRef.id);
+                    })
+                    .catch(function (error) {
+                        console.error("Error adding document: ", error);
+                    });
+            } else {
+                alert('Please enter a name');
+                return;
+            }
+            console.log(user, score);
+            scorelist();
+            clearInterval(interval);
+        }
+        if (count == 0) {
+            user = prompt("You Lose! Please enter your name.");
             if (user !== "") {
                 db.collection("scores").add({
                         name: user,
