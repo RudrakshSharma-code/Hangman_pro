@@ -151,13 +151,13 @@ window.onload = function scripts() {
 
     /*----------------------------------Decreases Score---------------------------------------------------*/
     function scoreUp() {
-        score += 1;
+        score += 10;
         scoring.innerHTML = "Score: " + score;
     }
     /*----------------------------------Increases Score---------------------------------------------------*/
     function scoreDown() {
-        if (score > 0) {
-            score = score - 1;
+        if (score >= 5) {
+            score = score - 5;
         } else {
             score = 0;
         }
